@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
+    "start": "tsx server/index.ts",
     "build": "vite build",
     "preview": "vite preview",
     "check": "tsc",
