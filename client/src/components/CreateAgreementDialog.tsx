@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Dialog,
   DialogContent,
@@ -64,8 +65,13 @@ export function CreateAgreementDialog() {
           New Agreement
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md bg-white border-0 shadow-2xl">
-        <DialogHeader>
+      <DialogContent
+  className="sm:max-w-md bg-white border-0 shadow-2xl"
+>
+
+
+<DialogHeader>
+
           <DialogTitle className="text-2xl font-display font-bold text-gray-900">
             Create Agreement
           </DialogTitle>
@@ -73,8 +79,13 @@ export function CreateAgreementDialog() {
             Upload a PDF and assign a signer to start the process.
           </DialogDescription>
         </DialogHeader>
+<ScrollArea className="max-h-[70vh] pr-4">
+  <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 pt-4">
+    
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 pt-4">
+
+
+
           <div className="space-y-2">
             <Label htmlFor="title" className="text-gray-700 font-medium">Agreement Title</Label>
             <Input
@@ -154,6 +165,7 @@ export function CreateAgreementDialog() {
             </Button>
           </div>
         </form>
+        </ScrollArea>
       </DialogContent>
     </Dialog>
   );

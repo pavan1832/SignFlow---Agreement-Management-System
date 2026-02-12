@@ -1,7 +1,6 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { setupAuth, registerAuthRoutes, isAuthenticated } from "./replit_integrations/auth";
 import { api } from "@shared/routes";
 import { z } from "zod";
 import multer from "multer";
@@ -10,6 +9,19 @@ import fs from "fs";
 import express from "express";
 
 // Setup multer for local file storage
+
+// TEMP auth middleware (replaces Replit Auth locally)
+const isAuthenticated = (req: any, _res: any, next: any) => {
+  // mock logged-in user
+  req.user = {
+    claims: {
+      sub: "local-user-123",
+      email: "localuser@test.com"
+    }
+  };
+  next();
+};
+
 const uploadDir = path.join(process.cwd(), "uploads");
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
@@ -32,8 +44,7 @@ export async function registerRoutes(
   app: Express
 ): Promise<Server> {
   // Auth Setup
-  await setupAuth(app);
-  registerAuthRoutes(app);
+  
 
   // Serve uploaded files statically (protected? mostly public for signedURL simulation)
   // In a real app, this should be protected or use SAS tokens.

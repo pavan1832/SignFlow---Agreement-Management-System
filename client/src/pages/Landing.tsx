@@ -24,11 +24,11 @@ export default function Landing() {
               <span className="font-display font-bold text-xl text-gray-900 tracking-tight">SignFlow</span>
             </div>
             <div className="flex items-center gap-4">
-              <a href="/api/login" className="text-sm font-medium text-gray-600 hover:text-gray-900">
+              <Link href="/dashboard" className="text-sm font-medium text-gray-600 hover:text-gray-900">
                 Sign in
-              </a>
+              </Link>
               <Button asChild className="shadow-lg shadow-primary/25">
-                <a href="/api/login">Get Started</a>
+                <Link href="/dashboard">Get Started</Link>
               </Button>
             </div>
           </div>
@@ -49,7 +49,7 @@ export default function Landing() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="h-14 px-8 text-lg shadow-xl shadow-primary/20 hover:shadow-2xl hover:shadow-primary/30 transition-all hover:-translate-y-0.5" asChild>
-                  <a href="/api/login">Start Signing Free</a>
+                <Link href="/dashboard">Start Signing Free</Link>
                 </Button>
                 <Button variant="outline" size="lg" className="h-14 px-8 text-lg border-2">
                   View Demo
