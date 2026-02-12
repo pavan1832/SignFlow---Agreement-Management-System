@@ -1,0 +1,272 @@
+📄 Agreement Management System
+
+(DocuSign-Style Mini Platform)
+
+1. Project Overview
+
+The Agreement Management System is a full-stack web application inspired by DocuSign’s core functionality.
+It enables users to upload agreements (PDFs), manage signing workflows, track agreement status, and maintain an audit trail of all actions.
+
+This project is built strictly using the following technologies, all of which are fully supported by Replit:
+
+Frontend: React.js
+
+Backend: Node.js with Express.js
+
+Database: MongoDB (MongoDB Atlas)
+
+Cloud Services: Azure App Service, Azure Blob Storage
+
+Version Control: Git & GitHub
+
+2. Technology Stack (MANDATORY – Do Not Change)
+Frontend (Replit – React Template)
+
+React.js (Functional Components)
+
+React Hooks (useState, useEffect)
+
+Context API (or Redux – optional)
+
+Axios (API communication)
+
+Backend (Replit – Node.js Template)
+
+Node.js
+
+Express.js
+
+JWT Authentication
+
+Multer (file upload handling)
+
+Database
+
+MongoDB Atlas (cloud-hosted)
+
+Cloud & Deployment
+
+Azure App Service (Backend deployment)
+
+Azure Blob Storage (PDF storage)
+
+Azure DevOps / GitHub Actions (optional CI/CD)
+
+⚠️ Important:
+Replit must use the same technologies listed above.
+No framework substitutions (e.g., no Next.js, no Firebase backend).
+
+3. System Architecture
+React Frontend (Replit)
+        |
+        | REST API Calls (HTTPS)
+        |
+Node.js + Express Backend (Replit)
+        |
+        | MongoDB Queries
+        |
+MongoDB Atlas
+        |
+        | File Upload
+        |
+Azure Blob Storage (PDF Files)
+
+Deployment:
+- Frontend → Azure App Service / Static Web App
+- Backend  → Azure App Service
+
+4. User Roles
+1. Sender
+
+Upload agreements (PDF)
+
+Assign signer
+
+Change agreement status (Draft → Sent)
+
+View audit logs
+
+2. Signer
+
+View assigned agreements
+
+Sign agreements
+
+Change agreement status (Sent → Signed)
+
+5. Agreement Lifecycle
+Draft  → Agreement created
+Sent   → Shared with signer
+Signed → Signer completes agreement
+
+
+Each state change is:
+
+Stored in the database
+
+Logged in the audit trail
+
+Reflected in the frontend UI
+
+6. Backend Documentation (Node.js + Express)
+Backend Folder Structure
+backend/
+│── server.js
+│── config/
+│   └── db.js
+│── models/
+│   ├── User.js
+│   ├── Agreement.js
+│   └── AuditLog.js
+│── routes/
+│   ├── authRoutes.js
+│   ├── agreementRoutes.js
+│   └── auditRoutes.js
+│── controllers/
+│   ├── authController.js
+│   ├── agreementController.js
+│   └── auditController.js
+│── middleware/
+│   └── authMiddleware.js
+│── .env
+│── package.json
+
+Database Schemas
+User Schema
+{
+  name: String,
+  email: String,
+  password: String,
+  role: "sender" | "signer"
+}
+
+Agreement Schema
+{
+  title: String,
+  fileUrl: String,
+  status: "Draft" | "Sent" | "Signed",
+  senderId: ObjectId,
+  signerId: ObjectId,
+  createdAt: Date
+}
+
+AuditLog Schema
+{
+  agreementId: ObjectId,
+  action: String,
+  performedBy: ObjectId,
+  timestamp: Date
+}
+
+REST API Endpoints
+Authentication
+Method	Endpoint	Description
+POST	/api/auth/register	Register user
+POST	/api/auth/login	Login user
+Agreements
+Method	Endpoint	Description
+POST	/api/agreements	Create agreement
+GET	/api/agreements	Fetch agreements
+PUT	/api/agreements/:id/status	Update status
+Audit Logs
+Method	Endpoint	Description
+GET	/api/audit/:agreementId	Fetch audit logs
+7. Frontend Documentation (React.js)
+Frontend Folder Structure
+frontend/
+│── src/
+│   ├── components/
+│   │   ├── Login.js
+│   │   ├── Dashboard.js
+│   │   ├── UploadAgreement.js
+│   │   ├── AgreementList.js
+│   │   └── AuditLog.js
+│   ├── context/
+│   │   └── AuthContext.js
+│   ├── services/
+│   │   └── api.js
+│   ├── App.js
+│   └── index.js
+
+Core React Features Used
+
+Functional Components
+
+Hooks (useState, useEffect)
+
+Context API for auth state
+
+REST API integration via Axios
+
+8. File Upload (Azure Blob Storage)
+Upload Flow
+
+User uploads PDF from React UI
+
+File sent to Node.js backend
+
+Backend uploads PDF to Azure Blob Storage
+
+Blob URL saved in MongoDB
+
+Azure Services Used
+
+Azure Storage Account
+
+Azure Blob Container
+
+Secure connection via Access Keys
+
+9. Deployment Strategy
+Backend
+
+Push code from Replit to GitHub
+
+Deploy to Azure App Service (Node.js runtime)
+
+Frontend
+
+Build React app
+
+Deploy to Azure App Service / Azure Static Web Apps
+
+10. Testing & Documentation
+Testing
+
+Manual API testing (Postman)
+
+Basic unit testing (Jest – optional)
+
+Documentation
+
+README.md
+
+API documentation
+
+Architecture explanation
+
+11. Security Measures
+
+JWT authentication
+
+Role-based access control
+
+Secure file uploads
+
+Environment variables for secrets
+
+12. Resume Description (Use This)
+
+Built a DocuSign-style agreement management system using React.js, Node.js, Express, REST APIs, MongoDB, and Azure App Service, with PDF storage on Azure Blob Storage and full agreement lifecycle tracking.
+
+13. Why This Project Fits DocuSign Perfectly
+DocuSign JD Requirement	Covered
+React frontend	✅
+Node.js backend	✅
+REST APIs	✅
+Azure services	✅
+Full-stack workflow	✅
+Documentation	✅
+14. Replit Execution Instructions (IMPORTANT)
+
+Use React templat...
