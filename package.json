@@ -4,8 +4,8 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
- "dev": "tsx server/index.ts",
-  "start": "tsx server/index.ts",
+"dev": "tsx server/index.ts",
+  "start": "npx tsx server/index.ts",
   "build": "echo \"skip build\"",
   "db:push": "drizzle-kit push"
   },
