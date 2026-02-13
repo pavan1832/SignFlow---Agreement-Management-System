@@ -6,8 +6,11 @@
     "rootDir": ".",
     "moduleResolution": "Node",
     "esModuleInterop": true,
+
     "strict": false,
     "skipLibCheck": true,
+    "noEmitOnError": false,
+
     "baseUrl": ".",
     "paths": {
       "@shared/*": ["shared/*"]
