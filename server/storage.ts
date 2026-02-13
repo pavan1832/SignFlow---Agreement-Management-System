@@ -1,5 +1,5 @@
 import { db } from "./db";
-import { agreements, auditLogs, type Agreement, type InsertAgreement, type AuditLog, type InsertAuditLog } from "@shared/schema";
+import { agreements, auditLogs, type Agreement, type InsertAgreement, type AuditLog, type InsertAuditLog } from "../shared/schema";
 import { eq, desc } from "drizzle-orm";
 import { authStorage, type IAuthStorage } from "./replit_integrations/auth/storage";
 
