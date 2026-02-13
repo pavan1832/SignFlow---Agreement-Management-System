@@ -1,9 +1,9 @@
 import { db } from "./db";
 import { agreements, auditLogs, type Agreement, type InsertAgreement, type AuditLog, type InsertAuditLog } from "../shared/schema";
 import { eq, desc } from "drizzle-orm";
-import { authStorage, type IAuthStorage } from "./replit_integrations/auth/storage";
 
-export interface IStorage extends IAuthStorage {
+export interface IStorage {
+
   // Agreements
   createAgreement(agreement: InsertAgreement): Promise<Agreement>;
   getAgreement(id: number): Promise<Agreement | undefined>;
@@ -19,8 +19,7 @@ export interface IStorage extends IAuthStorage {
 
 export class DatabaseStorage implements IStorage {
   // Auth methods delegated to authStorage
-  getUser = authStorage.getUser;
-  upsertUser = authStorage.upsertUser;
+ 
 
   async createAgreement(agreement: InsertAgreement): Promise<Agreement> {
     const [newAgreement] = await db.insert(agreements).values(agreement).returning();
